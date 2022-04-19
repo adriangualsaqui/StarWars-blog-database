@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from eralchemy import render_er
 
+
 Base = declarative_base()
 
 class Person(Base):
@@ -30,4 +31,9 @@ class Address(Base):
         return {}
 
 ## Draw from SQLAlchemy base
-render_er(Base, 'diagram.png')
+try:
+    result = render_er(Base, 'diagram.png')
+    print("Success! Check the diagram.png file")
+except Exception as e:
+    print("There was a problem genering the diagram")
+    raise e
